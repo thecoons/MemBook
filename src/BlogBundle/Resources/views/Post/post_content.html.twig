@@ -1,0 +1,29 @@
+
+<div class="row post_content">
+  <h3>{{ post.titre }}</h3>
+  <div class="col s8">
+    <img src="{{ post.url }}" class="responsive-img" />
+    <div class="row">
+
+      <div class="col s6">
+
+        <a class="waves-effect waves-light deep-orange btn"><i class="material-icons right">library_books</i>Show</a>
+      </div>
+      <div class="col s6">
+        <div class="right score_post">
+          <div class="chip grey lighten-1 ">
+            <i class="close material-icons ">visibility</i>
+            {{ post.score }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col s4">
+    {% include 'BlogBundle:Post:talk_content.html.twig'%}
+  </div>
+</div>
+<div class="divider">
+
+</div>

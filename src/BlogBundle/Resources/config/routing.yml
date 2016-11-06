@@ -1,0 +1,27 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }
+
+blog_socket:
+    path:     /socket/
+    defaults: { _controller: BlogBundle:Socket:index }
+
+create_post:
+    path:     /createPost
+    defaults: { _controller: BlogBundle:Post:createPost }
+
+show_post:
+    path:     /showPost
+    defaults: { _controller: BlogBundle:Post:showPost }
+
+delete_post:
+    path:     /deletePost/{id}
+    defaults: { _controller: BlogBundle:Post:deletePost }
+
+list_post:
+    path:     /listPost
+    defaults: { _controller: BlogBundle:Post:listPost }
+
+mybook_post:
+    path:     /mybook
+    defaults: { _controller: BlogBundle:Post:mybookPost }

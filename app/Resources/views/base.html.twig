@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{{ asset('materialize/css/materialize.min.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <!-- <link href="{{ asset('materialize/css/footer.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/> -->
+
+    </head>
+    <body>
+      {% if user.username is defined and not null %}
+      {% include 'BlogBundle:Default:side_bar.html.twig' %}
+      {% endif %}
+        {% include 'BlogBundle:Default:nav.html.twig' %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('materialize/js/materialize.js')}}"></script>
+        <!-- <script src="js/init.js"></script> -->
+        <script src="{{ asset('materialize/js/option.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,100 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}MeMBook - MyBook{% endblock %}
+
+{% block body %}
+<div class="section">
+  <div class="container">
+    <h1>{{ user.username }}'s Book</h1>
+    <div class="row">
+
+      {% for post in posts %}
+      {% if loop.index0 % 2 == 0 %}
+      {% if loop.index0 == 0 %}
+      <div class="col s6">
+        <div class="row">
+
+          {% endif %}
+          <div class="col s12">
+            <h4 class="header">{{ post.titre }}</h4>
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="{{ post.url}}">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>{{ post.description[:100]}} ...</p>
+                  {{ loop.index }}
+                  {{ loop.length }}
+                  {{ loop.length % 2 }}
+                  <br>
+                  <div class="chip grey lighten-1 ">
+                    <i class="close material-icons ">visibility</i>
+                    {{ post.score }}
+                  </div>
+                </div>
+                <div class="card-action">
+                  <a class="waves-effect waves-teal btn-flat deep-orange-text">Show</a>
+                  <a href="{{ path('delete_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat red-text">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if loop.length % 2 == 0 and loop.index == loop.length - 1 %}
+        </div>
+      </div>
+      {% endif %}
+      {% if loop.length % 2 == 1 and loop.index == loop.length %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+{% for post in posts %}
+  {% if loop.index0 % 2 == 1 %}
+    {% if loop.index0 == 1 %}
+<div class="col s6">
+  <div class="row">
+
+    {% endif %}
+    <div class="col s12">
+      <h4 class="header">{{ post.titre }}</h4>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="{{ post.url}}">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ post.description[:100]}} ...</p>
+            {{ loop.index }}
+            {{ loop.length }}
+            {{ loop.length % 2 }}
+            <br>
+            <div class="chip grey lighten-1 ">
+              <i class="close material-icons ">visibility</i>
+              {{ post.score }}
+            </div>
+          </div>
+          <div class="card-action">
+            <a class="waves-effect waves-teal btn-flat deep-orange-text">Show</a>
+            <a href="{{ path('delete_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat red-text">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if loop.length % 2 == 0 and loop.index == loop.length %}
+  </div>
+</div>
+    {% endif %}
+    {% if loop.length % 2 == 1 and loop.index == loop.length - 1%}
+  </div>
+</div>
+    {% endif %}
+
+  {% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}

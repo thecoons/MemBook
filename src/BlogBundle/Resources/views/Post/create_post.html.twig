@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}BlogBundle:Post:createPost{% endblock %}
+
+{% block body %}
+<br><br><br>
+
+<div class="container">
+  <div class="section">
+    {% block content %}
+    <h1 class="header">Add a new Meme !!!</h1>
+    {% endblock %}
+  </div>
+</div>
+<br><br><br>
+<div class="container">
+  <div class="section">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+  </div>
+</div>
+<br><br><br>
+
+{% endblock %}
