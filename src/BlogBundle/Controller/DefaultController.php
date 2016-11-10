@@ -13,4 +13,13 @@ class DefaultController extends Controller
 
         return $this->render('BlogBundle:Default:index.html.twig',array('user' => $user, 'posts' => $posts ));
     }
+
+    public function handleExceptionAction(){
+      $user = $this->getUser();
+      return $this->render('BlogBundle:Default:404.html.twig',array('user'=>$user));
+    }
+
+    public function confirmedAction() {
+      return $this->redirectToRoute('blog_homepage');
+    }
 }

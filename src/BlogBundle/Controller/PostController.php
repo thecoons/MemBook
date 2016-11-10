@@ -43,10 +43,12 @@ class PostController extends Controller
       return $this->render('BlogBundle:Post:my_book.html.twig', array('user' => $user, 'posts' => $posts));
     }
 
-    public function showPostAction()
-    {
-        return $this->render('BlogBundle:Post:show_post.html.twig', array(
-            // ...
+    public function showPostAction($id)
+    {   $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('BlogBundle:Post')->find($id);
+
+        return $this->render('BlogBundle:Post:show_post.html.twig', array( 'post' => $post, 'user' => $user
         ));
     }
 
@@ -59,7 +61,7 @@ class PostController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('mybook_post');
-        
+
     }
 
     public function listPostAction()
