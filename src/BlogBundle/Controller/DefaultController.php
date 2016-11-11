@@ -19,7 +19,8 @@ class DefaultController extends Controller
       return $this->render('BlogBundle:Default:404.html.twig',array('user'=>$user));
     }
 
-    public function confirmedAction() {
-      return $this->redirectToRoute('blog_homepage');
-    }
+    
+    // public function confirmedAction() {
+    //   return $this->redirectToRoute('blog_homepage');
+    // }
 }
