@@ -25,20 +25,6 @@ class User extends BaseUser
     */
     protected $user_book;
 
-    /**
-     * The people who I think are my friends.
-     *
-     * @ORM\OneToMany(targetEntity="Friendship", mappedBy="user")
-     */
-    private $friends;
-
-    /**
-     * The people who think that I’m their friend.
-     *
-     * @ORM\OneToMany(targetEntity="Friendship", mappedBy="friend")
-     */
-    private $friendsWithMe;
-
 
     public function __construct()
     {
@@ -53,25 +39,4 @@ class User extends BaseUser
       return $this->user_book;
     }
 
-    public function addFriendship(Friendship $friendship)
-    {
-        $this->friends->add($friendship);
-        $friendship->friend->addFriendshipWithMe($friendship);
-    }
-
-    public function addFriendshipWithMe(Friendship $friendship)
-    {
-        $this->friendsWithMe->add($friendship);
-    }
-
-    public function addFriend(User $friend)
-    {
-        $fs = new Friendship();
-        $fs->setUser($this);
-        $fs->setFriend($friend);
-        // set defaults
-        $fs->setHasBeenUseful(true);
-
-        $this->addFriendship($fs);
-    }
 }
