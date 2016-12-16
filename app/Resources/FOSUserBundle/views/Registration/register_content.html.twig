@@ -2,9 +2,25 @@
 <div class="section">
   <div class="container">
     {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        <div class="input-field">
+          {{ form_widget(form.username,{'attr':{'id':'username','class':'validate'}})}}
+          <label for="username">Utilisateur</label>
+        </div>
+        <div class="input-field">
+          {{ form_widget(form.email,{'attr':{'id':'email','class':'validate'}})}}
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field">
+          {{ form_widget(form.plainPassword.first,{'attr':{'id':'plainPassword','class':'validate'}})}}
+          <label for="plainPassword">Mot de passe</label>
+        </div>
+        <div class="input-field">
+          {{ form_widget(form.plainPassword.second,{'attr':{'id':'plainPasswordConf','class':'validate'}})}}
+          <label for="plainPasswordConf">Mot de passe Confirmation</label>
+        </div>
         {{ form_widget(form) }}
         <div>
-            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+            <input type="submit" class="btn" value="Inscrivez-vous" />
         </div>
     {{ form_end(form) }}
   </div>

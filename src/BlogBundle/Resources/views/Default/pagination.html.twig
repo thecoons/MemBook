@@ -1,0 +1,43 @@
+
+  <!-- <ul class="pagination ">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active blue"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul> -->
+  {# default Sliding pagination control implementation #}
+
+  {% if pageCount > 1 %}
+  <ul class="pagination">
+      {% if previous is defined %}
+          <li class="waves-effect">
+              <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><i class="material-icons">chevron_left</i></a>
+          </li>
+      {% else %}
+          <li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+      {% endif %}
+
+      {% for page in pagesInRange %}
+          {% if page != current %}
+              <li class="waves-effect">
+                  <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+              </li>
+          {% else %}
+              <li class="active blue"><a>{{ page }}</a></li>
+          {% endif %}
+
+      {% endfor %}
+
+      {% if next is defined %}
+          <li class="waves-effect">
+              <a href="{{ path(route, query|merge({(pageParameterName): next})) }}"><i class="material-icons">chevron_right</i></a>
+          </li>
+      {% else %}
+          <li class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
+      {% endif %}
+
+  </ul>
+  {% endif %}

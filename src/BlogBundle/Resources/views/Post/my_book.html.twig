@@ -32,6 +32,7 @@
                 </div>
                 <div class="card-action">
                   <a href="{{ path('show_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat deep-orange-text">Show</a>
+                  <a href="{{ path('update_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat deep-orange-text">Update</a>
                   <a href="{{ path('delete_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat red-text">Delete</a>
                 </div>
               </div>
@@ -75,6 +76,7 @@
           </div>
           <div class="card-action">
             <a href="{{ path('show_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat deep-orange-text">Show</a>
+            <a href="{{ path('update_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat deep-orange-text">Update</a>
             <a href="{{ path('delete_post',{'id':post.id})}}" class="waves-effect waves-teal btn-flat red-text">Delete</a>
           </div>
         </div>

@@ -10,9 +10,12 @@
 <div class="section">
 
 <div class="container">
-{% for post in posts %}
+{% for post in pagination %}
         {% include('BlogBundle:Post:post_content.html.twig')%}
-    {% endfor %}
+{% endfor %}
+  </div>
+  <div class="pagination center">
+      {{ knp_pagination_render(pagination) }}
   </div>
 </div>
 </div>

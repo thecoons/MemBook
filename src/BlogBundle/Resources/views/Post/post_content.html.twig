@@ -5,13 +5,9 @@
     <img src="{{ post.url }}" class="responsive-img" />
     <div class="row">
 
+
       <div class="col s6">
-        {% if "indexAction" in app.request.attributes.get("_controller") %}
-        <a href="{{path ('show_post',{'id':post.id})}}" class="waves-effect waves-light deep-orange btn"><i class="material-icons right">library_books</i>Show</a>
-        {% endif %}
-      </div>
-      <div class="col s6">
-        <div class="right score_post" >
+        <div class=" score_post" >
 
           <div class="chip grey lighten-1" >
             <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">visibility</i>
@@ -20,8 +16,25 @@
             </span>
           </div>
 
+          <div class="chip grey lighten-1" >
+            <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">today</i>
+            <span>
+              &nbsp;{{ post.postedDate|date('d/m/Y H:i') }}
+            </span>
+          </div>
+
         </div>
       </div>
+      <div class="col s6">
+        <div class="right">
+
+          {% if "indexAction" in app.request.attributes.get("_controller") %}
+          <a href="{{path ('show_post',{'id':post.id})}}" class="waves-effect waves-light deep-orange btn"><i class="material-icons right">library_books</i>Show</a>
+          {% endif %}
+        </div>
+      </div>
+
+
     </div>
   </div>
 

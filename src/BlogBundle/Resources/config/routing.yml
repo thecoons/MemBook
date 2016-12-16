@@ -7,21 +7,21 @@ blog_socket:
     defaults: { _controller: BlogBundle:Socket:index }
 
 create_post:
-    path:     /createPost
+    path:     /post/createPost/
     defaults: { _controller: BlogBundle:Post:createPost }
 
 show_post:
-    path:     /showPost/{id}
+    path:     /post/showPost/{id}
     defaults: { _controller: BlogBundle:Post:showPost }
 
 delete_post:
-    path:     /deletePost/{id}
+    path:     /post/deletePost/{id}
     defaults: { _controller: BlogBundle:Post:deletePost }
 
-list_post:
-    path:     /listPost
-    defaults: { _controller: BlogBundle:Post:listPost }
+update_post:
+    path:     /post/updatePost/{id}
+    defaults: { _controller: BlogBundle:Post:updatePost }
 
 mybook_post:
-    path:     /mybook
+    path:     /post/mybook
     defaults: { _controller: BlogBundle:Post:mybookPost }

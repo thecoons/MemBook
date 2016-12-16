@@ -8,7 +8,8 @@
 <div class="container">
   <div class="section">
     {% block content %}
-    <h1 class="header">Add a new Meme !!!</h1>
+
+    <h1 class="header">Edit your Meme</h1>
     {% endblock %}
   </div>
 </div>
@@ -28,7 +29,7 @@
     {{ form_widget(form.description,{'attr':{'class':'materialize-textarea','id':'description'}})}}
     <label for="description">Description</label>
   </div>
-    {{ form_widget(form.save, {'attr':{'class':'waves-effect waves-light btn'},'label':'Post Meme'}) }}
+    {{ form_widget(form.save, {'attr':{'class':'waves-effect waves-light btn'},'label':'Update Meme'}) }}
     {{ form_end(form) }}
   </div>
 </div>
