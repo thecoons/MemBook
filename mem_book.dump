@@ -1,0 +1,346 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: commentaire; Type: TABLE; Schema: public; Owner: thecoon
+--
+
+CREATE TABLE commentaire (
+    id integer NOT NULL,
+    user_id integer,
+    post_id integer,
+    data_post timestamp(0) without time zone NOT NULL,
+    description text NOT NULL
+);
+
+
+ALTER TABLE commentaire OWNER TO thecoon;
+
+--
+-- Name: commentaire_id_seq; Type: SEQUENCE; Schema: public; Owner: thecoon
+--
+
+CREATE SEQUENCE commentaire_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE commentaire_id_seq OWNER TO thecoon;
+
+--
+-- Name: fos_user; Type: TABLE; Schema: public; Owner: thecoon
+--
+
+CREATE TABLE fos_user (
+    id integer NOT NULL,
+    username character varying(180) NOT NULL,
+    username_canonical character varying(180) NOT NULL,
+    email character varying(180) NOT NULL,
+    email_canonical character varying(180) NOT NULL,
+    enabled boolean NOT NULL,
+    salt character varying(255),
+    password character varying(255) NOT NULL,
+    last_login timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    confirmation_token character varying(180) DEFAULT NULL::character varying,
+    password_requested_at timestamp(0) without time zone DEFAULT NULL::timestamp without time zone,
+    roles text NOT NULL
+);
+
+
+ALTER TABLE fos_user OWNER TO thecoon;
+
+--
+-- Name: COLUMN fos_user.roles; Type: COMMENT; Schema: public; Owner: thecoon
+--
+
+COMMENT ON COLUMN fos_user.roles IS '(DC2Type:array)';
+
+
+--
+-- Name: fos_user_id_seq; Type: SEQUENCE; Schema: public; Owner: thecoon
+--
+
+CREATE SEQUENCE fos_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE fos_user_id_seq OWNER TO thecoon;
+
+--
+-- Name: friendship; Type: TABLE; Schema: public; Owner: thecoon
+--
+
+CREATE TABLE friendship (
+    user_id integer NOT NULL,
+    friend_id integer NOT NULL
+);
+
+
+ALTER TABLE friendship OWNER TO thecoon;
+
+--
+-- Name: post; Type: TABLE; Schema: public; Owner: thecoon
+--
+
+CREATE TABLE post (
+    id integer NOT NULL,
+    user_id integer,
+    titre character varying(255) NOT NULL,
+    posted_date timestamp(0) without time zone NOT NULL,
+    url character varying(255) NOT NULL,
+    score integer NOT NULL,
+    description text NOT NULL
+);
+
+
+ALTER TABLE post OWNER TO thecoon;
+
+--
+-- Name: post_id_seq; Type: SEQUENCE; Schema: public; Owner: thecoon
+--
+
+CREATE SEQUENCE post_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE post_id_seq OWNER TO thecoon;
+
+--
+-- Data for Name: commentaire; Type: TABLE DATA; Schema: public; Owner: thecoon
+--
+
+COPY commentaire (id, user_id, post_id, data_post, description) FROM stdin;
+\.
+
+
+--
+-- Name: commentaire_id_seq; Type: SEQUENCE SET; Schema: public; Owner: thecoon
+--
+
+SELECT pg_catalog.setval('commentaire_id_seq', 1, false);
+
+
+--
+-- Data for Name: fos_user; Type: TABLE DATA; Schema: public; Owner: thecoon
+--
+
+COPY fos_user (id, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, confirmation_token, password_requested_at, roles) FROM stdin;
+2	Yu	yu	yu@gmail.com	yu@gmail.com	t	3jduj1wx6l2cgog4gk0wwkkgco88s4g	$2y$13$fxnDsD2rUgi0PxXanM2hEucaqI8bWqct1gW4Xnae5LlQVD/VwJW9u	2016-11-15 14:58:23	\N	\N	a:0:{}
+3	Yoslain	yoslain	yoslain@gmail.com	yoslain@gmail.com	t	68ar0xpt66sck0808cks8sggkwskogg	$2y$13$QeaS6i8bxkolEw2mumzgouV8IEXDfJMxUJR0kF/oBV8gldU5M6XrW	2016-11-19 16:04:29	\N	\N	a:0:{}
+1	TheCoon	thecoon	antobarth@gmail.com	antobarth@gmail.com	t	8wvij11x64o44ww8w4w4w0gwsgswo8c	$2y$13$qAO1Ik4EJvrcEsH079lmzeSzrz4xQlTOE/5Crt/hGR2A4kPCrUUxq	2016-12-17 17:25:17	\N	\N	a:0:{}
+8	LambdaUser	lambdauser	anto@gmail.com	anto@gmail.com	t	\N	$2y$13$MOHKd3JkyU2idrou4EpkFOG3pDboGlxqcEPxhgLjUZ7uRwGC4nHsG	2016-12-18 14:28:59	\N	\N	a:0:{}
+\.
+
+
+--
+-- Name: fos_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: thecoon
+--
+
+SELECT pg_catalog.setval('fos_user_id_seq', 8, true);
+
+
+--
+-- Data for Name: friendship; Type: TABLE DATA; Schema: public; Owner: thecoon
+--
+
+COPY friendship (user_id, friend_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: thecoon
+--
+
+COPY post (id, user_id, titre, posted_date, url, score, description) FROM stdin;
+1	1	Bacon I will love you forever !!!!!	2016-11-15 14:56:50	http://img-9gag-fun.9cache.com/photo/avr81eq_460s.jpg	8	Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de
+3	2	TRump mexican wall will be tunel	2016-11-15 14:59:14	http://img-9gag-fun.9cache.com/photo/aNd0dBG_460s.jpg	1	TRump mexican wall will be tunelTRump mexican wall will be tunelTRump mexican wall will be tunelTRump mexican wall will be tunelTRump mexican wall will be tunel
+4	1	Quelle que chose de plus cool quand même !!!	2016-11-15 15:00:38	http://img-9gag-fun.9cache.com/photo/a2dZ9Yp_700b.jpg	11	Update post fdsqflkjsdhflkjqsdhfl
+7	1	Not afraid of cold and snow. Only in Québec.	2016-12-18 14:09:25	http://img-9gag-fun.9cache.com/photo/a7ZNQ6b_460s.jpg	0	La Glace is a hamlet in northern Alberta, Canada within the County of Grande Prairie No. 1.[2] It is located along Highway 59 between Sexsmith and Valhalla Centre and has an elevation of 735 metres (2,411 ft).
+8	1	You will never be this cool	2016-12-18 14:11:56	http://img-9gag-fun.9cache.com/photo/a2dLwpE_460s.jpg	0	A temperature is an objective comparative measurement of hot or cold. It is measured by a thermometer. Several scales and units exist for measuring temperature, the most common being Celsius (denoted °C; formerly called centigrade), Fahrenheit
+9	8	#justaustraliathings	2016-12-18 14:31:04	http://img-9gag-fun.9cache.com/photo/aYKAEBq_460s.jpg	0	Road rage (also known as a traffic tantrum[1]) is aggressive or angry behavior by a driver of an automobile or other road vehicle which includes rude gestures, verbal insults, physical threats or dangerous driving methods targeted toward another driver.
+\.
+
+
+--
+-- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: thecoon
+--
+
+SELECT pg_catalog.setval('post_id_seq', 9, true);
+
+
+--
+-- Name: commentaire commentaire_pkey; Type: CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY commentaire
+    ADD CONSTRAINT commentaire_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: fos_user fos_user_pkey; Type: CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY fos_user
+    ADD CONSTRAINT fos_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: friendship friendship_pkey; Type: CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY friendship
+    ADD CONSTRAINT friendship_pkey PRIMARY KEY (user_id, friend_id);
+
+
+--
+-- Name: post post_pkey; Type: CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT post_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: idx_5a8a6c8da76ed395; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE INDEX idx_5a8a6c8da76ed395 ON post USING btree (user_id);
+
+
+--
+-- Name: idx_67f068bc4b89032c; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE INDEX idx_67f068bc4b89032c ON commentaire USING btree (post_id);
+
+
+--
+-- Name: idx_67f068bca76ed395; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE INDEX idx_67f068bca76ed395 ON commentaire USING btree (user_id);
+
+
+--
+-- Name: idx_7234a45f6a5458e8; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE INDEX idx_7234a45f6a5458e8 ON friendship USING btree (friend_id);
+
+
+--
+-- Name: idx_7234a45fa76ed395; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE INDEX idx_7234a45fa76ed395 ON friendship USING btree (user_id);
+
+
+--
+-- Name: uniq_957a647992fc23a8; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE UNIQUE INDEX uniq_957a647992fc23a8 ON fos_user USING btree (username_canonical);
+
+
+--
+-- Name: uniq_957a6479a0d96fbf; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE UNIQUE INDEX uniq_957a6479a0d96fbf ON fos_user USING btree (email_canonical);
+
+
+--
+-- Name: uniq_957a6479c05fb297; Type: INDEX; Schema: public; Owner: thecoon
+--
+
+CREATE UNIQUE INDEX uniq_957a6479c05fb297 ON fos_user USING btree (confirmation_token);
+
+
+--
+-- Name: post fk_5a8a6c8da76ed395; Type: FK CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY post
+    ADD CONSTRAINT fk_5a8a6c8da76ed395 FOREIGN KEY (user_id) REFERENCES fos_user(id);
+
+
+--
+-- Name: commentaire fk_67f068bc4b89032c; Type: FK CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY commentaire
+    ADD CONSTRAINT fk_67f068bc4b89032c FOREIGN KEY (post_id) REFERENCES post(id);
+
+
+--
+-- Name: commentaire fk_67f068bca76ed395; Type: FK CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY commentaire
+    ADD CONSTRAINT fk_67f068bca76ed395 FOREIGN KEY (user_id) REFERENCES fos_user(id);
+
+
+--
+-- Name: friendship fk_7234a45f6a5458e8; Type: FK CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY friendship
+    ADD CONSTRAINT fk_7234a45f6a5458e8 FOREIGN KEY (friend_id) REFERENCES fos_user(id);
+
+
+--
+-- Name: friendship fk_7234a45fa76ed395; Type: FK CONSTRAINT; Schema: public; Owner: thecoon
+--
+
+ALTER TABLE ONLY friendship
+    ADD CONSTRAINT fk_7234a45fa76ed395 FOREIGN KEY (user_id) REFERENCES fos_user(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
