@@ -1,10 +1,16 @@
 {% extends '::base.html.twig' %}
-{% block title %} 404 !!!{% endblock %}
+{% block title %} 404 error {% endblock %}
 {% block body %}
-  <div class="container center">
-    <div class="section">
-      <h2>404, is coming back !</h2>
-      <img src="{{ asset('img/404.jpg')}}" />
+<div class="container center">
+  <div class="section">
+    <h3><b>404</b>, here we go again ...</h3>
+    <div class="divider z-depth-3">
+    </div>
+    <div class="row">
+    <div class="col s12 m7 offset-m2 row-list">
+      <img src="{{ asset('img/404.jpg')}}" class="responsive-img">
+    </div>
     </div>
   </div>
+</div>
 {% endblock %}

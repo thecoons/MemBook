@@ -1,22 +1,26 @@
 # MeMBook
 
 ***
-A Symfony project created on November 4, 2016, 1:39 pm.
+A **Symfony** project created on *November 4, 2016, 1:39 pm*.
+## BARTHELEMY Antonin
+## CHOQUET Brett
 
 ***
 
 ## Setting
 
-1. Then pull the project on your system.
-2. You have to install *_Composer_* on your system. [Composer Page](https://getcomposer.org/)
-3. At the root directory's project where is your `composer.json` file, make a `composer install` command.
-4. You have to install *_Postgresql_*. [Postgresql Page](https://www.postgresql.org/)
-5. Don't forget to uncomment `extension=pdo.so` and `extension=php_pdo_pgsql.so` inside `php.ini`
-6. Then you have to setting the `app/config/parameters.yml` to your Postgresql database.
-7. And now setting the `app/config/config.yml` with the code below.
-8. Then use `php bin/console doctrine:database:create`.
-9. And `php bin/console doctrine:schema:create`
-10. Then you can start the server with `php bin/console server:start`
+1. Pull the project on your system.
+2. You have to install *_Composer_* on your system. [Composer Page](https://getcomposer.org/).
+3. Install *_php-xml_* on your system.
+4. You have to install *_Postgresql_*. [Postgresql Page](https://www.postgresql.org/). You should be able to login and create a database.
+5. Install (*_php-pgsql_*) on your system.
+5. At the root directory, where is your `composer.json` file, make a `composer install` command.
+6. Don't forget to uncomment `extension=pdo.so` and `extension=php_pdo_pgsql.so` inside `php.ini`
+7. Then you have to setting the `app/config/parameters.yml` to your Postgresql database.
+8. And now edit the `app/config/config.yml` with the code below.
+9. Then use `php bin/console doctrine:database:create`.
+10. And `php bin/console doctrine:schema:create`
+11. Then you can start the server with `php bin/console server:start`
 
 ```yaml
 #app/config/parameters.yml

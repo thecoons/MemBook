@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PostController extends Controller
 {
-  public function createPostAction(Request $request,$edit)
+  public function createPostAction(Request $request)
   {
     $user = $this->getUser();
     $post = new Post();
@@ -33,7 +33,7 @@ class PostController extends Controller
 
 
     return $this->render('BlogBundle:Post:create_post.html.twig', array(
-      'form' => $form->createView(),
+      'form' => $form->createView(), 'user' => $user
     ));
   }
 

@@ -58,7 +58,7 @@ class Post
     /**
      * @var textarea
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", length=255)
      */
     private $description;
 

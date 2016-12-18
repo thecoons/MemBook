@@ -1,19 +1,16 @@
 <ul id="slide-out" class="side-nav">
-    <li><div class="userView">
+  <li><div class="userView">
       <div class="background">
-        <img src="http://www.starwallpapers.com/walls/fox_animal_minimalism_hd_wallpaper-wide.jpg" class="responsive-img">
+        <img src="http://www.starwallpapers.com/walls/fox_animal_minimalism_hd_wallpaper-wide.jpg" class="responsive-img" alt="fox-background">
       </div>
-      <a href="#!user"><img class="circle" src="{{ asset('img/fox.jpg')}}"></a>
+      <a href="#!user"><img class="circle" src="{{ asset('img/fox.jpg')}}" alt="fox"></a>
       <a href="#!name"><span class="white-text name">{{ user.username }}</span></a>
       <br>
-      <!-- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
-    </div></li>
-    <li><a href="{{ path('create_post') }}"><i class="material-icons">library_add</i>Add your Meme</a></li>
-    <!-- <li><a href="#!">Second Link</a></li> -->
-    <!-- <li><a class="subheader">Subheader</a></li> -->
-    <li><a class="waves-effect" href="{{ path('blog_homepage') }}"><i class="material-icons">language</i>Meme Flux</a></li>
-    <li><a href="{{ path('mybook_post')}}" class="black-text"><i class="material-icons">library_books</i>MyBook</a></li>
-    <li><a href="{{ path('fos_user_security_logout')}}" class="black-text"><i class="material-icons">power_settings_new</i>Logout</a></li>
+  </div></li>
+  <li><a href="{{ path('create_post') }}"><i class="material-icons">library_add</i>Add your Meme</a></li>
+  <li><a class="waves-effect" href="{{ path('blog_homepage') }}"><i class="material-icons">language</i>Meme Flux</a></li>
+  <li><a href="{{ path('mybook_post')}}" class="black-text"><i class="material-icons">library_books</i>MyBook</a></li>
+  <li><a href="{{ path('fos_user_security_logout')}}" class="black-text"><i class="material-icons">power_settings_new</i>Logout</a></li>
 
-    <li><div class="divider"></div></li>
-  </ul>
+  <li><div class="divider"></div></li>
+</ul>

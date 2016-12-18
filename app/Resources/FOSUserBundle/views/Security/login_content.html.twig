@@ -1,29 +1,42 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+
 <div class="section">
   <div class="container">
-    <form action="{{ path("fos_user_security_check") }}" method="post">
-        {% if csrf_token %}
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-        {% endif %}
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+	<div class="card" id="login-card">
+          <div class="card-content">
+	    <h3 class="card-title black-text center-align" id="card-title">Log In</h3>
+	    {% if error %}
+	    <div><p class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</p></div>
+	    {% endif %}
+	    <form action="{{ path("fos_user_security_check") }}" method="post" id="login-form">
+              {% if csrf_token %}
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+              {% endif %}
 
-        <div class="input-field">
-          <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="validate"/>
-          <label for="username">Username</label>
-        </div>
 
-        <div class="input-field">
-          <input type="password" id="password" name="_password" required="required" class="validate"/>
-          <label for="password">Mot de passe</label>
-        </div>
+	      <div class="row">
+		<div class="input-field col s12">
+		  <input placeholder="Enter an username..." type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="validate"/>
+		  <label for="username">Username</label>
+		</div>
+              </div>
 
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">Ne m'oublie pas</label>
-
-        <input type="submit" id="_submit" name="_submit" class="btn right"value="Connexion" />
-    </form>
+	      <div class="row">
+		<div class="input-field col s12">
+		  <input placeholder="Enter a password..." type="password" id="password" name="_password" required="required" class="validate"/>
+		  <label for="password">Password</label>
+		</div>
+              </div>
+	      <div class="card-action">
+        	<input type="submit" id="_submit" name="_submit" class="btn blue darken-4" value="Log in"/>
+              </div>
+	    </form>
+	  </div>
+	</div>
+      </div>
+    </div>
   </div>
 </div>

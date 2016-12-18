@@ -1,0 +1,35 @@
+.error{
+    padding-top:10px;
+    color:red !important;
+    padding-bottom:10px;
+}
+#login-card{
+    margin-top:50px;
+}
+
+#card-title{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+form .card-action, form .card-reveal{
+    text-align:center;
+}
+
+.meme-img{
+    height:300px;
+}
+.hoverable-link{
+    color:inherit;
+}
+
+.row-list{
+    margin-top:30px;
+}
+.choice-li{
+    width:50%;
+    margin:auto;    
+}
+.choice-li li{
+    margin-top:20px;
+}

@@ -1,47 +1,39 @@
-
-<div class="row post_content">
-  <h3>{{ post.titre }}</h3>
-  <div class="col s8">
-    <img src="{{ post.url }}" class="responsive-img" />
-    <div class="row">
-
-
-      <div class="col s6">
-        <div class=" score_post" >
-
-          <div class="chip grey lighten-1" >
-            <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">visibility</i>
-            <span>
-              &nbsp;{{ post.score }}
-            </span>
-          </div>
-
-          <div class="chip grey lighten-1" >
-            <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">today</i>
-            <span>
-              &nbsp;{{ post.postedDate|date('d/m/Y H:i') }}
-            </span>
-          </div>
-
-        </div>
+<div class="row row-list">
+  <div class="col s12 m7 offset-m2">
+    <h3>{{ post.titre }}</h3>
+  </div>
+  <div class="col s12 m7 offset-m2">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{ post.url }}" alt="{{ post.titre }}">
       </div>
-      <div class="col s6">
-        <div class="right">
-
-          {% if "indexAction" in app.request.attributes.get("_controller") %}
-          <a href="{{path ('show_post',{'id':post.id})}}" class="waves-effect waves-light deep-orange btn"><i class="material-icons right">library_books</i>Show</a>
-          {% endif %}
-        </div>
+      
+      <div class="card-content">
+        <p class="flow-text">{{ post.description|length > 255 ? post.description|slice(0, 255) ~ ' ... ' : post.description }}</p>
       </div>
+      <div class="card-action">
 
-
+        <div class="chip grey lighten-1" >
+	  <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">visibility</i>
+	  <span>
+	    &nbsp;{{ post.score }}
+	  </span>
+	</div>
+	
+	<div class="chip grey lighten-1" >
+	  <i class="material-icons tiny" style="display:inline-flex;vertical-align:middle;">today</i>
+	  <span>
+	    &nbsp;{{ post.postedDate|date('d/m/Y H:i') }}
+	  </span>
+	</div>
+	<div class="chip grey lighten-1">
+	  <img src="{{ asset('img/fox.jpg')}}" alt="Contact Person">
+	  {{ post.userpost.username}}
+	</div>
+	{% if "indexAction" in app.request.attributes.get("_controller") %}
+	<a href="{{path ('show_post',{'id':post.id})}}" class="waves-effect waves-light btn"><i class="material-icons right">library_books</i>Show post</a>
+	{% endif %}
+      </div>
     </div>
   </div>
-
-  <div class="col s4">
-    {% include 'BlogBundle:Post:talk_content.html.twig'%}
-  </div>
-</div>
-<div class="divider">
-
 </div>

@@ -1,15 +1,12 @@
-
-<nav class="blue darken-4" role="navigation">
-  <!--   -->
+<nav class="white">
   <div  class="nav-wrapper container">
     {% if user.username is defined and not null %}
-    <a id="logo-container" href="#" data-activates="slide-out" class="brand-logo menu-collapse">MeMBook</a>
+    <a id="logo-container" href="#" data-activates="slide-out" class="brand-logo black-text menu-collapse"><i class="large material-icons">reorder</i>MemeBook</a>
     {% else %}
-    <a id="logo-container" class="brand-logo">MeMBook</a>
+    <a href="{{ path('blog_homepage') }}" id="logo-container" class="brand-logo black-text">MemeBook</a>
     {% endif %}
 
     <ul id="nav-mobile" class="side-nav">
     </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </div>
 </nav>

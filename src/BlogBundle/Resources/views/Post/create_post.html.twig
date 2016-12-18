@@ -1,37 +1,39 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}BlogBundle:Post:createPost{% endblock %}
+{% block title %}Add a meme !{% endblock %}
 
 {% block body %}
-<br><br><br>
 
-<div class="container">
-  <div class="section">
-    {% block content %}
-    <h1 class="header">Add a new Meme !!!</h1>
-    {% endblock %}
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+	<div class="card" id="login-card">
+          <div class="card-content">
+	    <h3 class="card-title black-text center-align" id="card-title">A totally (not) brand new image.<br>A slightly different opinion.</h3>
+	    {{ form_start(form) }}
+	    <div class="input-field">
+	      {{ form_widget(form.titre,{'attr':{'placeholder':'Enter a fancy title ...','class':'validate'}})}}
+	      <label>Title</label>
+	    </div>
+	    <div class="input-field">
+	      {{ form_widget(form.url,{'attr':{'placeholder':'Enter the link (url) of the meme ...','class':'validate'}})}}
+	      <label>Url</label>
+	    </div>
+	    <div class="input-field">
+	      {{ form_widget(form.description,{'attr':{'class':'materialize-textarea','placeholder':'Enter a short description or what\'s on your mind.\nStay reasonable.'}})}}
+	      <label>Description</label>
+	    </div>
+
+	    <div class="card-action">
+	      {{ form_widget(form.save, {'attr':{'class':'waves-effect waves-light blue darken-4 btn'},'label':'Post Meme'}) }}
+	      </div>
+	    {{ form_end(form) }}
+	  </div>
+	</div>
+      </div>
+    </div>
   </div>
 </div>
-<br><br><br>
-<div class="container">
-  <div class="section">
-    {{ form_start(form) }}
-    <div class="input-field">
-      {{ form_widget(form.titre,{'attr':{'id':'titre','class':'validate'}})}}
-      <label for="titre">Titre</label>
-    </div>
-    <div class="input-field">
-      {{ form_widget(form.url,{'attr':{'id':'url_pic','class':'validate'}})}}
-      <label for="url_pic">Url</label>
-    </div>
-    <div class="input-field">
-    {{ form_widget(form.description,{'attr':{'class':'materialize-textarea','id':'description'}})}}
-    <label for="description">Description</label>
-  </div>
-    {{ form_widget(form.save, {'attr':{'class':'waves-effect waves-light btn'},'label':'Post Meme'}) }}
-    {{ form_end(form) }}
-  </div>
-</div>
-<br><br><br>
 
 {% endblock %}

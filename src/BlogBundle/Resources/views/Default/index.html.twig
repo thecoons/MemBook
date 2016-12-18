@@ -1,39 +1,47 @@
 {% extends "::base.html.twig" %}
 
-{% block title %} MemBook {% endblock %}
+{% block title %} MemeBook {% endblock %}
 {% block body %}
 
-
-<!-- <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> -->
+ {% if user.username is defined and not null %}
 <div class="section no-pad-bot" id="index-banner">
-{% if user.username is defined and not null %}
-<div class="section">
-
-<div class="container">
-{% for post in pagination %}
-        {% include('BlogBundle:Post:post_content.html.twig')%}
-{% endfor %}
-  </div>
-  <div class="pagination center">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+	<div class="col s12 m7 offset-m2">
+	  <h4 class="center-align ">Hey, {{ user.username }} !</h4>
+	  <p class="center-align">Don't forget that you can naviguate the site via the menu, left of the website title, now that you're logged in.<br>
+	    Use it to add new memes and check your own ones !</p>
+	</div>
+      </div>
+      <div class="divider z-depth-3">
+      </div>
+      {% for post in pagination %}
+      {% include('BlogBundle:Post:post_content.html.twig')%}
+      {% endfor %}
+    </div>
+    <div class="pagination center">
       {{ knp_pagination_render(pagination) }}
+    </div>
   </div>
 </div>
-</div>
+
+
 {% else %}
 <div class="container">
   <br><br>
-  <h1 class="header center deep-orange-text">MeMBook</h1>
+  <h1 class="header center">MemeBook</h1>
   <div class="row center">
-    <h5 class="header col s12 light">Store and share your memes !!! </h5>
+    <h5 class="header col s12 light">Store and share your memes !! </h5>
   </div>
   <br><br>
-  <div class="row center">
+  <div class="divider z-depth-3">
+  </div>
+  <div class="row center row-list">
+    <h5>Pleaser register or log in to start enjoying quality memes ! </h5>
     <a href="{{ path('fos_user_security_login')}}" class="waves-effect waves-light yellow darken-2 btn"><i class="material-icons right">power_settings_new</i>Sign in</a>
     <a href="{{ path('fos_user_registration_register')}}" class="waves-effect waves-light deep-orange darken-2 btn"><i class="material-icons right">input</i>Sign up</a>
   </div>
 </div>
-</div>
 {% endif %}
-<br><br>
-</div>
 {% endblock %}
