@@ -13,8 +13,8 @@ A **Symfony** project created on *November 4, 2016, 1:39 pm*.
 1. Pull the project on your system.
 2. You have to install *_Composer_* on your system. [Composer Page](https://getcomposer.org/).
 3. Install *_php-xml_* on your system.
-4. You have to install *_Postgresql_*. [Postgresql Page](https://www.postgresql.org/). You should be able to login and create a new database `symfony`.
-5. Use the `membook.dump` file to import a sample demonstration database, with `psql symfony < membook.dump `. More instructions [here](https://www.postgresql.org/docs/9.1/static/backup-dump.html).
+4. You have to install *_Postgresql_*. [Postgresql Page](https://www.postgresql.org/). You should be able to login and create a new database `symfony_membook`.
+5. Use the `membook.dump` file to import a sample demonstration database, with `psql symfony_membook < membook.dump `. More instructions [here](https://www.postgresql.org/docs/9.1/static/backup-dump.html).
 5. Install (*_php-pgsql_*) on your system.
 5. At the root directory, where is your `composer.json` file, make a `composer install` command.
 6. Don't forget to uncomment `extension=pdo.so` and `extension=php_pdo_pgsql.so` inside `php.ini`
